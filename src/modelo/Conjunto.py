@@ -1,4 +1,5 @@
-import tkinter as tk
+import matplotlib.pyplot as plt
+from matplotlib_venn import venn2
 
 class Conjunto:
     def __init__(self, elementos):
@@ -35,30 +36,19 @@ class Conjunto:
 
     def __str__(self):
         return str(self.elementos)
-    
-def main():
-    # Crear dos conjuntos
-    A = Conjunto([1, 2, 3, 4, 5])
-    B = Conjunto([4, 5, 6, 7, 8])
 
-    # Realizar operaciones en conjuntos
-    union = A.union(B)
-    interseccion = A.interseccion(B)
-    diferencia = A.diferencia(B)
-    complemento = A.complemento(B)
+# Crear dos conjuntos
+A = Conjunto([1, 2, 3, 4, 5])
+B = Conjunto([4, 5, 6, 7, 8])
 
-    # Mostrar los resultados en una interfaz gráfica
-    root = tk.Tk()
-    root.title("Operaciones en Conjuntos")
+# Realizar operaciones en conjuntos
+union = A.union(B)
+interseccion = A.interseccion(B)
+diferencia = A.diferencia(B)
+complemento = A.complemento(B)
 
-    tk.Label(root, text="Conjunto A: " + str(A)).pack()
-    tk.Label(root, text="Conjunto B: " + str(B)).pack()
-    tk.Label(root, text="Unión: " + str(A.union(B))).pack()
-    tk.Label(root, text="Intersección: " + str(A.interseccion(B))).pack()
-    tk.Label(root, text="Diferencia: " + str(A.diferencia(B))).pack()
-    tk.Label(root, text="Complemento de A: " + str(A.complemento(B))).pack()
-
-    root.mainloop()
-
-if __name__ == "__main__":
-    main()
+# Mostrar los resultados en una interfaz gráfica
+fig, ax = plt.subplots(figsize=(6, 6))
+venn2([set(A.elementos), set(B.elementos)], set_labels=('A', 'B'))
+plt.title('Diagrama de Venn')
+plt.show()
