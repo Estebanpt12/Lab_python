@@ -57,7 +57,7 @@ def main():
     plt.figure(figsize=(10, 5))
 
     plt.subplot(121)
-    venn2((str(diferencia), str(interseccion), str(complemento)), set_labels=('A', 'B'))
+    venn2((diferencia.elementos, interseccion.elementos, complemento.elementos), set_labels=('A', 'B'))
     plt.title('Conjuntos A y B')
 
     plt.show()
