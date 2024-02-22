@@ -64,9 +64,6 @@ def main():
     for i, elemento in enumerate(complemento.elementos):
         venn_ax.annotate(str(elemento), (0.7, 0.5), xytext=(0.7, 0.5 + (i+1)*0.05), ha='center', va='center')
 
-    # Dibujar la intersección
-    venn_ax.add_patch(plt.Circle((0.5, 0.5), 0.3, color='green', alpha=0.5))
-
     # Agregar elementos de la intersección
     for i, elemento in enumerate(interseccion.elementos):
         venn_ax.annotate(str(elemento), (0.5, 0.5), xytext=(0.5, 0.5 + (i+1)*0.05), ha='center', va='center')
