@@ -57,12 +57,8 @@ def main():
     plt.figure(figsize=(10, 5))
 
     plt.subplot(121)
-    venn2([set(A.elementos), set(B.elementos)], set_labels=('A', 'B'))
+    venn2((diferencia, interseccion, complemento), set_labels=('A', 'B'))
     plt.title('Conjuntos A y B')
-
-    plt.subplot(122)
-    venn2([set(A.elementos), set(B.elementos)], set_labels=('A', 'B'), subset_label_formatter=lambda x: f'{x} elementos')
-    plt.title('Intersección de A y B')
 
     plt.show()
 
