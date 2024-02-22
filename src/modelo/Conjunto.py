@@ -1,4 +1,5 @@
-import matplotlib.pyplot as plt
+import tkinter as tk
+from matplotlib import pyplot as plt
 from matplotlib_venn import venn2
 
 class Conjunto:
@@ -37,18 +38,35 @@ class Conjunto:
     def __str__(self):
         return str(self.elementos)
 
-# Crear dos conjuntos
-A = Conjunto([1, 2, 3, 4, 5])
-B = Conjunto([4, 5, 6, 7, 8])
+def main():
+    # Crear dos conjuntos
+    A = Conjunto([1, 2, 3, 4, 5])
+    B = Conjunto([4, 5, 6, 7, 8])
 
-# Realizar operaciones en conjuntos
-union = A.union(B)
-interseccion = A.interseccion(B)
-diferencia = A.diferencia(B)
-complemento = A.complemento(B)
+    # Realizar operaciones en conjuntos
+    union = A.union(B)
+    interseccion = A.interseccion(B)
+    diferencia = A.diferencia(B)
+    complemento = A.complemento(B)
 
-# Mostrar los resultados en una interfaz gráfica
-fig, ax = plt.subplots(figsize=(6, 6))
-venn2([set(A.elementos), set(B.elementos)], set_labels=('A', 'B'))
-plt.title('Diagrama de Venn')
-plt.show()
+    # Mostrar los resultados en una interfaz gráfica
+    root = tk.Tk()
+    root.title("Operaciones en Conjuntos")
+
+    # Mostrar los conjuntos como diagramas de Venn
+    plt.figure(figsize=(10, 5))
+
+    plt.subplot(121)
+    venn2([set(A.elementos), set(B.elementos)], set_labels=('A', 'B'))
+    plt.title('Conjuntos A y B')
+
+    plt.subplot(122)
+    venn2([set(A.elementos), set(B.elementos)], set_labels=('A', 'B'), subset_label_formatter=lambda x: f'{x} elementos')
+    plt.title('Intersección de A y B')
+
+    plt.show()
+
+    root.mainloop()
+
+if __name__ == "__main__":
+    main()
