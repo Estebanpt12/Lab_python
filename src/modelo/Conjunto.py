@@ -49,20 +49,38 @@ def main():
     diferencia = A.diferencia(B)
     complemento = A.complemento(B)
 
-    # Mostrar los resultados en una interfaz gráfica
-    root = tk.Tk()
-    root.title("Operaciones en Conjuntos")
+    venn = plt.figure()
+    venn_ax = venn.add_subplot(111)
 
-    # Mostrar los conjuntos como diagramas de Venn
-    plt.figure(figsize=(10, 5))
+    # Dibujar los conjuntos
+    venn_ax.add_patch(plt.Circle((0.3, 0.5), 0.3, color='blue', alpha=0.5))
+    venn_ax.add_patch(plt.Circle((0.7, 0.5), 0.3, color='orange', alpha=0.5))
 
-    plt.subplot(121)
-    venn2((diferencia.elementos, interseccion.elementos, complemento.elementos), set_labels=('A', 'B'))
-    plt.title('Conjuntos A y B')
+    # Dibujar la intersección
+    venn_ax.add_patch(plt.Circle((0.5, 0.5), 0.3, color='green', alpha=0.5))
 
+    # Añadir etiquetas
+    venn_ax.text(0.3, 0.5, 'Conjunto 1', ha='center', va='center')
+    venn_ax.text(0.7, 0.5, 'Conjunto 2', ha='center', va='center')
+    venn_ax.text(0.5, 0.5, 'Intersección', ha='center', va='center')
+
+    # Agregar elementos de conjunto1
+    for i, elemento in enumerate(diferencia.elementos):
+        venn_ax.annotate(str(elemento), (0.3, 0.5), xytext=(0.3, 0.5 + (i+1)*0.05), ha='center', va='center')
+
+    # Agregar elementos de conjunto2
+    for i, elemento in enumerate(complemento.elementos):
+        venn_ax.annotate(str(elemento), (0.7, 0.5), xytext=(0.7, 0.5 + (i+1)*0.05), ha='center', va='center')
+
+    # Ajustar límites y etiquetas
+    venn_ax.set_xlim(0, 1)
+    venn_ax.set_ylim(0, 1)
+    venn_ax.set_xticks([])
+    venn_ax.set_yticks([])
+    venn_ax.set_aspect('equal')
+
+    # Mostrar el diagrama
     plt.show()
-
-    root.mainloop()
 
 if __name__ == "__main__":
     main()
