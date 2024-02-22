@@ -73,7 +73,7 @@ def main():
         venn_ax.annotate(str(elemento), (0.7, 0.5), xytext=(0.7, 0.5 + (i+1)*0.05), ha='center', va='center')
 
     for i, elemento in enumerate(elementosC.elementos):
-        venn_ax.annotate(str(elemento), (0.5, 0.2), xytext=(0.5, 0.2 + (i+1)*0.05), ha='center', va='center')
+        venn_ax.annotate(str(elemento), (0.5, 0.08), xytext=(0.5, 0.08 + (i+1)*0.05), ha='center', va='center')
 
     for i, elemento in enumerate(elementosAC.elementos):
         venn_ax.annotate(str(elemento), (0.33, 0.33), xytext=(0.33, 0.33 + (i+1)*0.05), ha='center', va='center')
