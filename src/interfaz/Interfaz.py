@@ -10,7 +10,7 @@ def execute():
     C = Conjunto([4, 3, 6, 9, 10])
 
     # Realizar operaciones en conjuntos
-    union = A.union(B)
+    union = A.union(B).union(C)
     elementosA = A.diferencia(B).diferencia(C)
     elementosB = B.diferencia(A).diferencia(C)
     elementosC = C.diferencia(A).diferencia(B)
@@ -18,8 +18,8 @@ def execute():
     elementosBC = B.interseccion(C).diferencia(A)
     elementosAC = A.interseccion(C).diferencia(B)
     interseccion = A.interseccion(B).interseccion(C)
-    diferencia = A.diferencia(B)
-    complemento = A.complemento(B)
+    diferencia = A.diferencia(B).diferencia(C)
+    complemento = A.complemento(B, C)
 
     # Crear una figura para el diagrama de Venn
     venn = plt.figure()
@@ -72,6 +72,6 @@ def execute():
 
     # Mostrar el diagrama
     plt.text(0.5, 0.97, f'Unión: {union}', ha='center', va='center')
-    plt.text(0.5, 0.92, f'Diferencia: {diferencia}', ha='center', va='center')
-    plt.text(0.5, 0.87, f'Complemento: {complemento}', ha='center', va='center')
+    plt.text(0.5, 0.92, f'Diferencia (A-B)-C: {diferencia}', ha='center', va='center')
+    plt.text(0.5, 0.87, f'Complemento A: {complemento}', ha='center', va='center')
     plt.show()
