@@ -3,17 +3,7 @@ from matplotlib import pyplot as plt
 from modelo.Conjunto import Conjunto
 
 # Definir una función para ejecutar el programa
-def execute():
-
-    # Solicitar al usuario ingresar elementos para los conjuntos
-    elementos_A = input("Ingresa los elementos del conjunto A separados por comas: ").split(',')
-    elementos_B = input("Ingresa los elementos del conjunto B separados por comas: ").split(',')
-    elementos_C = input("Ingresa los elementos del conjunto C separados por comas: ").split(',')
-
-    # Crear los conjuntos directamente con las listas de elementos
-    A = Conjunto(elementos_A)
-    B = Conjunto(elementos_B)
-    C = Conjunto(elementos_C)
+def crear_interfaz(A: Conjunto, B:Conjunto, C:Conjunto):
 
     # Realizar operaciones en conjuntos
     union = A.union(B).union(C)
