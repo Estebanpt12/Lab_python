@@ -4,10 +4,16 @@ from modelo.Conjunto import Conjunto
 
 # Definir una función para ejecutar el programa
 def execute():
-    # Crear dos conjuntos
-    A = Conjunto([1, 2, 3, 4, 5])
-    B = Conjunto([4, 5, 6, 7, 8])
-    C = Conjunto([4, 3, 6, 9, 10])
+
+    # Solicitar al usuario ingresar elementos para los conjuntos
+    elementos_A = input("Ingresa los elementos del conjunto A separados por comas: ").split(',')
+    elementos_B = input("Ingresa los elementos del conjunto B separados por comas: ").split(',')
+    elementos_C = input("Ingresa los elementos del conjunto C separados por comas: ").split(',')
+
+    # Crear los conjuntos directamente con las listas de elementos
+    A = Conjunto(elementos_A)
+    B = Conjunto(elementos_B)
+    C = Conjunto(elementos_C)
 
     # Realizar operaciones en conjuntos
     union = A.union(B).union(C)
